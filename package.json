@@ -6,14 +6,19 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "compass": "^0.1.1",
+    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-player": "^2.10.1",
     "react-responsive-modal": "^6.2.0",
+    "react-router-dom": "5",
+    "react-router-transition": "^2.1.0",
     "react-scripts": "5.0.1",
     "react-select-search": "^3.0.9",
     "react-tsparticles": "^2.0.6",
     "reactjs-popup": "^2.0.5",
+    "sass": "^1.52.3",
     "styled-components": "^5.3.5",
     "tsparticles": "^2.0.6",
     "tsparticles-engine": "^2.0.6",
@@ -26,7 +31,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -40,6 +47,7 @@
       "not dead",
       "not op_mini all"
     ],
+    "homepage": "https://anshumalivfx.github.io/",
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",

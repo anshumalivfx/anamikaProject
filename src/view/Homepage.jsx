@@ -9,8 +9,15 @@ import SelectSearch from "react-select-search";
 import AnimeOption from "./AnimeOption";
 import background from '../images/background.jpg'
 import animeList from "../controller/animeList";
+import {Switch, Route, Link} from "react-router-dom";
+import { AnimatedSwitch } from 'react-router-transition';
 import Popup from 'reactjs-popup';
 import WatchVideo from "./WatchVideo";
+import ContactUs from "./ContactUs";
+import PopularAnime from "./PopularAnime";
+import {TranslucentNav} from "./components/MainCard";
+import CurvedButton from "./components/CommonButtons";
+import About from "./About";
 
 class Homepage extends React.PureComponent<IProps> {
     constructor(props) {
@@ -62,10 +69,11 @@ class Homepage extends React.PureComponent<IProps> {
         `;
 
         const ResultPlace= styled.div`
+            position: relative;
           display: flex;
           flex-direction: column;
           align-items: center;
-          width: 80%;
+          align-self: center;
           height: 100vh;
           -webkit-font-feature-settings: normal;
           border-radius: 50px;
@@ -75,8 +83,8 @@ class Homepage extends React.PureComponent<IProps> {
           border-radius: 12px;
           padding: 1rem;
           box-shadow: 0 10px 15px rgb(0 0 0 / 20%);
-          box-sizing: border-box;
           width: calc(100% - 4rem);
+          box-sizing: border-box;
           color: rgba(0,0,0,0.8);
           backdrop-filter: blur(33px);
           background-blend-mode: overlay;
@@ -107,56 +115,96 @@ class Homepage extends React.PureComponent<IProps> {
             width: 100%;
             height: 100%;
             -webkit-font-feature-settings: normal;
+          
         `;
 
 
         return (
             // create a page with dark background
-
-
                 <AnimeCatalog style={{filter: this.state.popupOpen ? "blur('5px')" : null}} >
                     <div>
                         <Particles id="tsparticles" options={{preset: "bigCircles"}} init={this.customInit} />
 
                     </div>
-                    <AnimeCatalogTitle>Anime Catalog</AnimeCatalogTitle>
-                    <ResultPlace className="catalog">
-                        <ResultPlaceTitle>
-                            Hei!, Search your favorite anime
-                        </ResultPlaceTitle>
-                        <div>
+                    <AnimeCatalogTitle>Animeworld</AnimeCatalogTitle>
+                    <TranslucentNav>
+                        <Link to="/">
+                        <CurvedButton>
+                            Home
+                        </CurvedButton>
+                        </Link>
 
-                            <form action="/search" method="GET" className="search-container">
+                        <Link to="/popular">
+                        <CurvedButton>
+                            Popular
+                        </CurvedButton>
+                        </Link>
 
-                                <input type="text" name="search" placeholder="Search..." className="search-input"/>
-                                <a href="#" className="search-btn">
-                                    <i className="fas fa-search"></i>
-                                </a>
-                            </form>
-                        </div>
+                        <Link to="/contactus">
+                        <CurvedButton>
+                            Contact Us
+                        </CurvedButton>
+                        </Link>
+                        <Link to="/about">
+                        <CurvedButton>
+                            About
+                        </CurvedButton>
+                        </Link>
+                    </TranslucentNav>
+                    <AnimatedSwitch
+                        atEnter={{ opacity: 0 }}
+                        atLeave={{ opacity: 1 }}
+                        atActive={{ opacity: 1 }}
+                        mapStyles={styles => ({ opacity: styles.opacity })}
+                        style={{position: "relative", width: "100%", height: "100%", justifyContent: "center", alignItems: "center", alignSelf: "center"}}
+                    >
+                        <Route exact path="/">
+                            <ResultPlace className="catalog">
+                                <ResultPlaceTitle>
+                                    Hei!, Search your favorite anime
+                                </ResultPlaceTitle>
+                                <div>
 
-                        <div className="catalog-container">
-                            <CatalogContainer>
-                            {
-                                animeList.map(anime => (
-                                    <a href="#" onClick={() => this.setState({popupOpen: true ,selectedAnime: anime.videosrc})}>
-                                        <AnimeOption key={anime.id} anime={anime}>
-                                        </AnimeOption>
-                                    </a>
-                                ))
-                            }
+                                    <form action="/search" method="GET" className="search-container">
+
+                                        <input type="text" name="search" placeholder="Search..." className="search-input"/>
+                                        <a href="#" className="search-btn">
+                                            <i className="fas fa-search"></i>
+                                        </a>
+                                    </form>
+                                </div>
+
+                                <div className="catalog-container">
+                                    <CatalogContainer>
+                                        {
+                                            animeList.map(anime => (
+                                                <a href="#" onClick={() => this.setState({popupOpen: true ,selectedAnime: anime.videosrc})}>
+                                                    <AnimeOption key={anime.id} anime={anime}>
+                                                    </AnimeOption>
+                                                </a>
+                                            ))
+                                        }
 
 
-                            </CatalogContainer>
+                                    </CatalogContainer>
 
-                        </div>
+                                </div>
 
-                    </ResultPlace>
+                            </ResultPlace>
+
+                        </Route>
+                        <Route path="/contactus">
+                            <ContactUs/>
+                        </Route>
+                        <Route path="/popular">
+                            <PopularAnime/>
+                        </Route>
+                        <Route path="/about">
+                            <About/>
+                        </Route>
+                    </AnimatedSwitch>
                     <WatchVideo open={this.state.popupOpen} toggleModal={()=>{this.setState({popupOpen: !this.state.popupOpen})}} videosrc={this.state.selectedAnime}/>
                 </AnimeCatalog>
-
-
-
         );
     }
 }

@@ -99,7 +99,7 @@ const AnimeCardContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 20px;
+    
 `;
 
 const AnimeCardContent = styled.div`
@@ -120,14 +120,14 @@ const AnimeCardContent = styled.div`
 
 
 
-const AnimeOption = (props) => {
+const AnimeCardNew = (props) => {
 
     return (
         <AnimeCardContainer>
             <AnimeCard>
                 <AnimeCardContent>
-                    <AnimeImage src={props.anime.image} alt={props.anime.title} />
-                    <AnimeTitle>{props.anime.title}</AnimeTitle>
+                    <AnimeImage src={props.image} alt={props.title} />
+                    <AnimeTitle>{props.title}</AnimeTitle>
                 </AnimeCardContent>
             </AnimeCard>
         </AnimeCardContainer>
@@ -136,4 +136,4 @@ const AnimeOption = (props) => {
     );
 };
 
-export default AnimeOption;
+export default AnimeCardNew;
