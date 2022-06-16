@@ -6,7 +6,7 @@ const MainCard= styled.div`
   flex-direction: column;
   align-items: center;
   align-self: center;
-  height: 50vh;
+  height: 55vh;
   -webkit-font-feature-settings: normal;
   border-radius: 50px;
   margin: 0 1rem 0 0;
@@ -20,6 +20,8 @@ const MainCard= styled.div`
   color: rgba(0,0,0,0.8);
   backdrop-filter: blur(33px);
   background-blend-mode: overlay;
+  overflow: auto ;
+  
 `;
 
 

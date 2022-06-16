@@ -13,7 +13,6 @@ const ContactUsContainer = styled.div`
   width: 80%;
   height: 80%;
   padding: 20px;
-  margin-top: 20px;
   margin-bottom: 20px;
   @media (max-width: 768px) {
     margin-top: 0px;
@@ -25,7 +24,7 @@ const ContactUsContainer = styled.div`
 class ContactUs extends Component {
     render() {
         return (
-            <MainCard>
+            <MainCard style={{height: '60vh', padding: '100px'}}>
                 <ContactUsContainer style={{width: '300px', height: '350px'}}>
                     <form>
 
