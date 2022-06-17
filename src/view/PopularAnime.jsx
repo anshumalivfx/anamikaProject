@@ -24,14 +24,19 @@ class PopularAnime extends Component {
 
 
         const animeCards = []
-        animeList.map((anime, index) => {
+        // sort the list by popularityRating
+        animeList.sort((a, b) => {
+            return b.popularityRating - a.popularityRating
+        }
+        ).map((anime, index) => {
             animeCards.push(<AnimeOption key={index} anime={anime}/>)
-        })
+        }
+        );
         return (
 
-            <MainCard >
+            <MainCard style={{display: 'flex'}} >
                 <PopularTitle>Popular Anime</PopularTitle>
-                <div style={{display: 'flex',flexDirection: 'row'}}>
+                <div style={{display: 'flex',flexDirection: 'row', flexWrap: 'wrap'}}>
                     {animeCards.map((anime, index) => {
                         return anime
                     })}

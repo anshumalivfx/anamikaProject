@@ -67,11 +67,11 @@ const AnimeCard = styled.div`
 const AnimeImage = styled.img`
     width: 100px;
     height: 100px;
-    object-fit: cover;
+    object-fit: contain;
 `;
 
 const AnimeTitle = styled.h3`
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: bold;
     margin: 0;
     padding: 0.5rem;

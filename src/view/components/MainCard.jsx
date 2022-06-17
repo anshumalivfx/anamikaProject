@@ -3,10 +3,11 @@ import styled from "styled-components";
 const MainCard= styled.div`
   position: relative;
   display: flex;
+  wrap-option: wrap;
   flex-direction: column;
   align-items: center;
   align-self: center;
-  height: 55vh;
+  height: 70vh;
   -webkit-font-feature-settings: normal;
   border-radius: 50px;
   margin: 0 1rem 0 0;
